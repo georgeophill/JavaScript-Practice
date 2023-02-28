@@ -10,14 +10,24 @@
 
     <div class="clock">
       <div class="clock-face">
-        <div class="hand hour-hand"></div>
-        <div class="hand min-hand"></div>
-        <div class="hand second-hand"></div>
+        <div id="george">George's  Clock </div>
+        <div class="george">
+          <div class="hand hour-hand"> </div>
+          <div class="hand min-hand"></div>
+          <div class="hand second-hand"></div>
+        </div>
       </div>
     </div>
 
 
   <style>
+
+    #george {
+    position: relative;
+    padding-top: 12rem;
+    font-size: 30px;
+    }
+
     html {
       background: #3cce46 url(https://unsplash.it/1500/1000?image=881&blur=5);
       background-size: cover;
@@ -50,6 +60,8 @@
         0 0 10px rgba(0,0,0,0.2);
     }
 
+
+
     .clock-face {
       position: relative;
       width: 100%;
@@ -72,7 +84,16 @@
   </style>
 
   <script>
+    const secondHand = document.querySelector(".second-hand")
 
+    function setDate(){
+      const now = new Date();
+      const seconds = now.getSeconds();
+      const secondsDegrees = (seconds / 60) * 360;
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+    }
+
+    setInterval(setDate, 1000);
 
   </script>
 </body>
